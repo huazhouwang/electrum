@@ -68,7 +68,7 @@ def get_coins_by_chain(chain_code: str) -> List[CoinInfo]:
     :param chain_code: chain_code
     :return: list of CoinInfo
     """
-    coins = [i for i in get_all_coins() if i.chain_code == chain_code]
+    coins = [i for i in registry.coin_dict.values() if i.chain_code == chain_code]
     coins.extend(daos.get_coins_by_chain(chain_code))
 
     coins = _deduplicate_coins(coins)
